@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/userservice
-    username: user_service
+    url: jdbc:postgresql://db:5432/tech_spec_db
+    username: user
     password: password
   jpa:
     hibernate:

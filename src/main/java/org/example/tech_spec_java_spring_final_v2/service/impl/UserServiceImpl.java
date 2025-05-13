@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userRepository.save(user);
         } catch (Exception e) {
-            log.info("Error occurred while creating user with name: {}", user.getName(), e);
+            log.error("Error occurred while creating user with name: {}", user.getName(), e);
             throw new RuntimeException(e);
         }
     }
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long id) {
         log.info("Fetching user with ID: {}", id);
         User user =  userRepository.findById(id)
-                .orElseThrow(() -> {log.info("User with ID: {} not found", id);
+                .orElseThrow(() -> {log.error("User with ID: {} not found", id);
                     return new RuntimeException("User not found");
                 });
         log.info("Successfully fetched user with ID: {}", id);
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
             log.info("User with ID: {} updated successfully", savedUser.getId());
             return savedUser;
         } catch (Exception e) {
-            log.info("Error occurred while updating user with ID: {}", id, e);
+            log.error("Error occurred while updating user with ID: {}", id, e);
             throw new RuntimeException(e);
         }
     }
@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
             userRepository.deleteById(id);
             log.info("User with ID: {} deleted successfully", id);
         } catch (Exception e) {
-            log.info("Error occurred while deleting user with ID: {}", id, e);
+            log.error("Error occurred while deleting user with ID: {}", id, e);
             throw new RuntimeException(e);
         }
         }
